@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { toast } from 'sonner'
 import { Button } from '@/shared/components/ui/Button'
+import { ConfirmDialog } from '@/shared/components/ui/ConfirmDialog'
 import { EmptyState } from '@/shared/components/ui/EmptyState'
 import { Modal } from '@/shared/components/ui/Modal'
 import { SearchInput } from '@/shared/components/ui/SearchInput'
@@ -27,6 +28,8 @@ export function ProductsPage() {
   const [search, setSearch] = useState('')
   const [isCreateOpen, setIsCreateOpen] = useState(false)
   const [editingProduct, setEditingProduct] =
+    useState<ProductWithCategory | null>(null)
+  const [deletingProduct, setDeletingProduct] =
     useState<ProductWithCategory | null>(null)
   const debouncedSearch = useDebouncedValue(search)
   const productsQuery = useProducts(debouncedSearch)
@@ -63,14 +66,15 @@ export function ProductsPage() {
     }
   }
 
-  const handleDelete = async (product: ProductWithCategory) => {
-    if (!window.confirm(t('common.confirm'))) {
+  const handleDelete = async () => {
+    if (!deletingProduct) {
       return
     }
 
     try {
-      await deleteProduct.mutateAsync(product.id)
+      await deleteProduct.mutateAsync(deletingProduct.id)
       toast.success(t('products.deleted'))
+      setDeletingProduct(null)
     } catch (error) {
       toast.error(getErrorMessage(error, t('errors.generic')))
     }
@@ -136,7 +140,7 @@ export function ProductsPage() {
               product={product}
               canManage={canManage}
               onEdit={setEditingProduct}
-              onDelete={handleDelete}
+              onDelete={setDeletingProduct}
               deleteDisabled={deleteProduct.isPending}
             />
           ))}
@@ -157,6 +161,17 @@ export function ProductsPage() {
           isSubmitting={isFormSubmitting}
         />
       </Modal>
+
+      <ConfirmDialog
+        open={deletingProduct !== null}
+        title={t('common.delete')}
+        description={deletingProduct?.name_zh}
+        confirming={deleteProduct.isPending}
+        onCancel={() => setDeletingProduct(null)}
+        onConfirm={() => {
+          void handleDelete()
+        }}
+      />
     </section>
   )
 }

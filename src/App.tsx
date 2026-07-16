@@ -6,79 +6,27 @@ import '@/lib/i18n'
 import { queryClient } from '@/lib/query/client'
 import { useAuth, useAuthBootstrap } from '@/features/auth/hooks/useAuth'
 import { LoginPage } from '@/features/auth/pages/LoginPage'
+import { HomePage } from '@/features/home/pages/HomePage'
+import { MorePage } from '@/features/home/pages/MorePage'
+import { UsersPage } from '@/features/users/pages/UsersPage'
+import { CategoriesPage } from '@/features/categories/pages/CategoriesPage'
+import { ProductsPage } from '@/features/products/pages/ProductsPage'
+import { SuppliersPage } from '@/features/suppliers/pages/SuppliersPage'
 import { InventoryPage } from '@/features/inventory/pages/InventoryPage'
 import { ProcurementNeedsPage } from '@/features/procurement/needs/pages/ProcurementNeedsPage'
-import { SmartProcurementPage } from '@/features/procurement/smart/pages/SmartProcurementPage'
 import { TodayProcurementPage } from '@/features/procurement/today/pages/TodayProcurementPage'
+import { SmartProcurementPage } from '@/features/procurement/smart/pages/SmartProcurementPage'
+import { InvoicesPage } from '@/features/invoices/pages/InvoicesPage'
+import { ExcelPage } from '@/features/excel/pages/ExcelPage'
 import { APP_ROUTES } from '@/shared/constants/routes'
-import { Button } from '@/shared/components/ui/Button'
 import { Spinner } from '@/shared/components/ui/Spinner'
-
-type TaskLink = {
-  to: string
-  icon: string
-  titleKey: string
-  metaKey: string
-}
-
-const homeTasks: TaskLink[] = [
-  {
-    to: APP_ROUTES.INVENTORY,
-    icon: 'I',
-    titleKey: 'home.countStock',
-    metaKey: 'home.countStockMeta',
-  },
-  {
-    to: APP_ROUTES.PROCUREMENT_TODAY,
-    icon: 'T',
-    titleKey: 'home.todayBuy',
-    metaKey: 'home.todayBuyMeta',
-  },
-  {
-    to: APP_ROUTES.PROCUREMENT_NEEDS,
-    icon: 'N',
-    titleKey: 'home.needs',
-    metaKey: 'home.needsMeta',
-  },
-  {
-    to: APP_ROUTES.PROCUREMENT_SMART,
-    icon: 'S',
-    titleKey: 'home.smart',
-    metaKey: 'home.smartMeta',
-  },
-]
-
-function HomePage() {
-  const { t } = useTranslation()
-
-  return (
-    <section>
-      <header className="page-header">
-        <h1>{t('home.title')}</h1>
-        <p>{t('home.subtitle')}</p>
-      </header>
-
-      <div className="task-list">
-        {homeTasks.map((task) => (
-          <Link key={task.to} to={task.to} className="task-item">
-            <span className="task-item__icon">{task.icon}</span>
-            <span className="task-item__body">
-              <span className="task-item__title">{t(task.titleKey)}</span>
-              <span className="task-item__meta">{t(task.metaKey)}</span>
-            </span>
-          </Link>
-        ))}
-      </div>
-    </section>
-  )
-}
 
 function AppRoutes() {
   useAuthBootstrap()
   const { initialized, isAuthenticated } = useAuth()
 
   if (!initialized) {
-    return <Spinner label="Loading" />
+    return <Spinner />
   }
 
   return (
@@ -105,7 +53,6 @@ function AppRoutes() {
 
 function AuthenticatedShell() {
   const { t } = useTranslation()
-  const { signOut } = useAuth()
 
   return (
     <div className="app-shell">
@@ -113,53 +60,59 @@ function AuthenticatedShell() {
         <Link to={APP_ROUTES.HOME} className="app-brand">
           {t('app.name')}
         </Link>
-        <Button type="button" variant="ghost" size="sm" onClick={() => void signOut()}>
-          {t('common.logout')}
-        </Button>
+        <span className="muted" style={{ fontSize: '0.85rem' }}>
+          {t('app.tagline')}
+        </span>
       </header>
 
       <main className="app-main">
         <Routes>
           <Route index element={<HomePage />} />
-          <Route path={APP_ROUTES.INVENTORY.slice(1)} element={<InventoryPage />} />
-          <Route
-            path={APP_ROUTES.PROCUREMENT_NEEDS.slice(1)}
-            element={<ProcurementNeedsPage />}
-          />
-          <Route
-            path={APP_ROUTES.PROCUREMENT_TODAY.slice(1)}
-            element={<TodayProcurementPage />}
-          />
-          <Route
-            path={APP_ROUTES.PROCUREMENT_SMART.slice(1)}
-            element={<SmartProcurementPage />}
-          />
+          <Route path="inventory" element={<InventoryPage />} />
+          <Route path="products" element={<ProductsPage />} />
+          <Route path="categories" element={<CategoriesPage />} />
+          <Route path="suppliers" element={<SuppliersPage />} />
+          <Route path="procurement/needs" element={<ProcurementNeedsPage />} />
+          <Route path="procurement/today" element={<TodayProcurementPage />} />
+          <Route path="procurement/smart" element={<SmartProcurementPage />} />
+          <Route path="invoices" element={<InvoicesPage />} />
+          <Route path="excel" element={<ExcelPage />} />
+          <Route path="users" element={<UsersPage />} />
+          <Route path="more" element={<MorePage />} />
           <Route path="*" element={<Navigate to={APP_ROUTES.HOME} replace />} />
         </Routes>
       </main>
 
-      <nav className="app-bottom-nav" aria-label={t('nav.home')}>
-        <NavItem to={APP_ROUTES.HOME} label={t('nav.home')} />
+      <nav className="app-bottom-nav" aria-label="Primary">
+        <NavItem to={APP_ROUTES.HOME} end label={t('nav.home')} />
         <NavItem to={APP_ROUTES.INVENTORY} label={t('nav.inventory')} />
-        <NavItem to={APP_ROUTES.PROCUREMENT_TODAY} label={t('common.today')} />
-        <NavItem to={APP_ROUTES.PROCUREMENT_NEEDS} label={t('home.needs')} />
-        <NavItem to={APP_ROUTES.PROCUREMENT_SMART} label={t('home.smart')} />
+        <NavItem to={APP_ROUTES.PROCUREMENT_TODAY} label={t('nav.procurement')} />
+        <NavItem to={APP_ROUTES.PRODUCTS} label={t('nav.products')} />
+        <NavItem to="/more" label={t('nav.more')} />
       </nav>
     </div>
   )
 }
 
-function NavItem({ to, label }: { to: string; label: string }) {
+function NavItem({
+  to,
+  label,
+  end = false,
+}: {
+  to: string
+  label: string
+  end?: boolean
+}) {
   return (
     <NavLink
       to={to}
-      className="nav-item"
-      style={({ isActive }) => ({
-        color: isActive ? 'var(--color-brand)' : undefined,
-        fontWeight: isActive ? 600 : undefined,
-      })}
+      end={end}
+      className={({ isActive }) => `nav-item${isActive ? ' is-active' : ''}`}
+      data-active="false"
     >
-      <span>{label}</span>
+      {({ isActive }) => (
+        <span data-active={isActive ? 'true' : 'false'}>{label}</span>
+      )}
     </NavLink>
   )
 }
@@ -169,7 +122,7 @@ export default function App() {
     <QueryClientProvider client={queryClient}>
       <BrowserRouter>
         <AppRoutes />
-        <Toaster richColors position="top-center" />
+        <Toaster richColors position="top-center" closeButton />
       </BrowserRouter>
     </QueryClientProvider>
   )

@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { toast } from 'sonner'
 import { Button } from '@/shared/components/ui/Button'
+import { ConfirmDialog } from '@/shared/components/ui/ConfirmDialog'
 import { EmptyState } from '@/shared/components/ui/EmptyState'
 import { Modal } from '@/shared/components/ui/Modal'
 import { SearchInput } from '@/shared/components/ui/SearchInput'
@@ -26,6 +27,9 @@ export function SuppliersPage() {
   const [search, setSearch] = useState('')
   const [isCreateOpen, setIsCreateOpen] = useState(false)
   const [editingSupplier, setEditingSupplier] = useState<Supplier | null>(null)
+  const [deactivatingSupplier, setDeactivatingSupplier] = useState<Supplier | null>(
+    null,
+  )
   const debouncedSearch = useDebouncedValue(search)
   const suppliersQuery = useSuppliers(debouncedSearch)
   const createSupplier = useCreateSupplier()
@@ -59,14 +63,15 @@ export function SuppliersPage() {
     }
   }
 
-  const handleDeactivate = async (supplier: Supplier) => {
-    if (!window.confirm(t('common.confirm'))) {
+  const handleDeactivate = async () => {
+    if (!deactivatingSupplier) {
       return
     }
 
     try {
-      await deactivateSupplier.mutateAsync(supplier.id)
+      await deactivateSupplier.mutateAsync(deactivatingSupplier.id)
       toast.success(t('suppliers.deleted'))
+      setDeactivatingSupplier(null)
     } catch (error) {
       toast.error(getErrorMessage(error, t('errors.generic')))
     }
@@ -132,7 +137,7 @@ export function SuppliersPage() {
               supplier={supplier}
               canManage={canManage}
               onEdit={setEditingSupplier}
-              onDeactivate={handleDeactivate}
+              onDeactivate={setDeactivatingSupplier}
               deactivateDisabled={deactivateSupplier.isPending}
             />
           ))}
@@ -152,6 +157,17 @@ export function SuppliersPage() {
           isSubmitting={isFormSubmitting}
         />
       </Modal>
+
+      <ConfirmDialog
+        open={deactivatingSupplier !== null}
+        title={t('common.delete')}
+        description={deactivatingSupplier?.name}
+        confirming={deactivateSupplier.isPending}
+        onCancel={() => setDeactivatingSupplier(null)}
+        onConfirm={() => {
+          void handleDeactivate()
+        }}
+      />
     </section>
   )
 }
