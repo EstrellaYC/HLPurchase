@@ -1,0 +1,223 @@
+{
+  "app": {
+    "name": "HL 采购",
+    "tagline": "餐厅库存与采购"
+  },
+  "common": {
+    "save": "保存",
+    "cancel": "取消",
+    "delete": "删除",
+    "edit": "编辑",
+    "create": "新建",
+    "search": "搜索",
+    "loading": "加载中…",
+    "confirm": "确认",
+    "back": "返回",
+    "actions": "操作",
+    "active": "启用",
+    "inactive": "停用",
+    "uploadImage": "上传图片",
+    "noResults": "暂无结果",
+    "required": "必填",
+    "optional": "可选",
+    "all": "全部",
+    "today": "今天",
+    "language": "语言",
+    "logout": "退出登录",
+    "retry": "重试",
+    "yes": "是",
+    "no": "否",
+    "quantity": "数量",
+    "unit": "单位",
+    "note": "备注",
+    "status": "状态",
+    "date": "日期",
+    "total": "合计"
+  },
+  "nav": {
+    "home": "首页",
+    "inventory": "库存",
+    "procurement": "采购",
+    "products": "商品",
+    "more": "更多"
+  },
+  "home": {
+    "title": "今日任务",
+    "subtitle": "先做餐厅当下要做的事，而不是逛 ERP。",
+    "countStock": "盘点库存",
+    "countStockMeta": "更新现有数量",
+    "todayBuy": "今日采购",
+    "todayBuyMeta": "确认并下单",
+    "needs": "采购需求",
+    "needsMeta": "记录厨房需要什么",
+    "smart": "智能采购",
+    "smartMeta": "按低库存建议采购",
+    "invoices": "发票",
+    "invoicesMeta": "上传并核对供应商发票",
+    "setupHint": "请配置 Supabase 环境变量以连接真实数据。"
+  },
+  "auth": {
+    "loginTitle": "登录",
+    "loginSubtitle": "供餐厅员工日常采购使用。",
+    "email": "邮箱",
+    "password": "密码",
+    "submit": "登录",
+    "invalidCredentials": "邮箱或密码错误"
+  },
+  "users": {
+    "title": "团队与权限",
+    "subtitle": "店主管理餐厅员工角色。",
+    "displayName": "显示名称",
+    "role": "角色",
+    "roles": {
+      "owner": "店主",
+      "manager": "经理",
+      "staff": "员工"
+    },
+    "activate": "启用",
+    "deactivate": "停用",
+    "updated": "用户已更新"
+  },
+  "categories": {
+    "title": "分类",
+    "subtitle": "方便厨房快速找货。",
+    "nameZh": "中文名",
+    "nameEn": "英文名",
+    "sortOrder": "排序",
+    "create": "新增分类",
+    "empty": "暂无分类",
+    "saved": "分类已保存",
+    "deleted": "分类已删除"
+  },
+  "products": {
+    "title": "商品",
+    "subtitle": "日常原料与耗材。",
+    "nameZh": "中文名",
+    "nameEn": "英文名",
+    "sku": "SKU",
+    "category": "分类",
+    "minStock": "最低库存",
+    "create": "新增商品",
+    "empty": "暂无商品",
+    "saved": "商品已保存",
+    "deleted": "商品已删除"
+  },
+  "suppliers": {
+    "title": "供应商",
+    "subtitle": "你从谁那里采购。",
+    "name": "供应商名称",
+    "contactName": "联系人",
+    "phone": "电话",
+    "email": "邮箱",
+    "wechat": "微信",
+    "notes": "备注",
+    "create": "新增供应商",
+    "empty": "暂无供应商",
+    "saved": "供应商已保存",
+    "deleted": "供应商已删除"
+  },
+  "inventory": {
+    "title": "库存",
+    "subtitle": "一线快速盘点。",
+    "onHand": "现有",
+    "lowStock": "低库存",
+    "update": "更新库存",
+    "updated": "库存已更新",
+    "empty": "暂无库存商品",
+    "filterLow": "仅看低库存"
+  },
+  "procurementNeeds": {
+    "title": "采购需求",
+    "subtitle": "厨房提需求，经理转成订单。",
+    "create": "新建需求",
+    "titleField": "标题",
+    "neededDate": "需要日期",
+    "addItem": "添加商品",
+    "empty": "暂无待处理需求",
+    "saved": "需求已保存",
+    "convert": "转入今日采购",
+    "converted": "已转为采购单",
+    "status": {
+      "open": "待处理",
+      "converted": "已转换",
+      "cancelled": "已取消"
+    }
+  },
+  "procurementToday": {
+    "title": "今日采购",
+    "subtitle": "今天要买什么的任务清单。",
+    "empty": "今天暂无采购任务",
+    "confirm": "确认采购单",
+    "markOrdered": "标记已下单",
+    "markReceived": "标记已收货",
+    "updated": "采购单已更新",
+    "status": {
+      "draft": "草稿",
+      "confirmed": "已确认",
+      "ordered": "已下单",
+      "received": "已收货",
+      "cancelled": "已取消"
+    }
+  },
+  "smartProcurement": {
+    "title": "智能采购",
+    "subtitle": "根据低库存建议采购数量。",
+    "generate": "生成建议",
+    "apply": "生成草稿采购单",
+    "empty": "暂无低库存建议",
+    "created": "草稿采购单已创建",
+    "suggestedQty": "建议数量",
+    "preferredSupplier": "首选供应商"
+  },
+  "invoices": {
+    "title": "发票",
+    "subtitle": "收货后登记供应商发票。",
+    "create": "新增发票",
+    "invoiceNumber": "发票号",
+    "amount": "金额",
+    "empty": "暂无发票",
+    "saved": "发票已保存",
+    "verify": "核对",
+    "dispute": "异议",
+    "description": "说明",
+    "addLine": "添加明细",
+    "supplier": "供应商",
+    "status": {
+      "pending": "待核对",
+      "verified": "已核对",
+      "disputed": "有异议"
+    }
+  },
+  "excel": {
+    "title": "Excel 导入 / 导出",
+    "subtitle": "批量管理商品与供应商。",
+    "exportProducts": "导出商品",
+    "exportSuppliers": "导出供应商",
+    "importProducts": "导入商品",
+    "importSuppliers": "导入供应商",
+    "exported": "导出完成",
+    "imported": "导入完成",
+    "templateHint": "请以导出文件作为导入模板。"
+  },
+  "more": {
+    "title": "更多",
+    "categories": "分类",
+    "suppliers": "供应商",
+    "users": "团队",
+    "excel": "Excel",
+    "invoices": "发票",
+    "smart": "智能采购",
+    "needs": "采购需求"
+  },
+  "errors": {
+    "generic": "出错了",
+    "unauthorized": "请先登录",
+    "forbidden": "没有权限",
+    "notConfigured": "尚未配置 Supabase",
+    "uploadFailed": "图片上传失败",
+    "network": "网络错误"
+  },
+  "permissions": {
+    "managerOnly": "仅经理与店主可操作"
+  }
+}

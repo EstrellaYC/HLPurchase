@@ -1,0 +1,223 @@
+{
+  "app": {
+    "name": "HL Purchase",
+    "tagline": "Restaurant inventory & procurement"
+  },
+  "common": {
+    "save": "Save",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "edit": "Edit",
+    "create": "Create",
+    "search": "Search",
+    "loading": "Loading…",
+    "confirm": "Confirm",
+    "back": "Back",
+    "actions": "Actions",
+    "active": "Active",
+    "inactive": "Inactive",
+    "uploadImage": "Upload image",
+    "noResults": "No results",
+    "required": "Required",
+    "optional": "Optional",
+    "all": "All",
+    "today": "Today",
+    "language": "Language",
+    "logout": "Log out",
+    "retry": "Retry",
+    "yes": "Yes",
+    "no": "No",
+    "quantity": "Quantity",
+    "unit": "Unit",
+    "note": "Note",
+    "status": "Status",
+    "date": "Date",
+    "total": "Total"
+  },
+  "nav": {
+    "home": "Home",
+    "inventory": "Stock",
+    "procurement": "Buy",
+    "products": "Items",
+    "more": "More"
+  },
+  "home": {
+    "title": "Today's tasks",
+    "subtitle": "Do the next restaurant job, not browse an ERP.",
+    "countStock": "Count stock",
+    "countStockMeta": "Update on-hand quantities",
+    "todayBuy": "Today's purchases",
+    "todayBuyMeta": "Confirm and send orders",
+    "needs": "Procurement needs",
+    "needsMeta": "Capture what the kitchen needs",
+    "smart": "Smart buy",
+    "smartMeta": "Suggest orders from low stock",
+    "invoices": "Invoices",
+    "invoicesMeta": "Upload and verify supplier invoices",
+    "setupHint": "Connect Supabase env vars to use live data."
+  },
+  "auth": {
+    "loginTitle": "Sign in",
+    "loginSubtitle": "Staff access for daily kitchen purchasing.",
+    "email": "Email",
+    "password": "Password",
+    "submit": "Sign in",
+    "invalidCredentials": "Invalid email or password"
+  },
+  "users": {
+    "title": "Team & permissions",
+    "subtitle": "Owners manage roles for restaurant staff.",
+    "displayName": "Display name",
+    "role": "Role",
+    "roles": {
+      "owner": "Owner",
+      "manager": "Manager",
+      "staff": "Staff"
+    },
+    "activate": "Activate",
+    "deactivate": "Deactivate",
+    "updated": "User updated"
+  },
+  "categories": {
+    "title": "Categories",
+    "subtitle": "Organize kitchen items for fast picking.",
+    "nameZh": "Chinese name",
+    "nameEn": "English name",
+    "sortOrder": "Sort order",
+    "create": "Add category",
+    "empty": "No categories yet",
+    "saved": "Category saved",
+    "deleted": "Category deleted"
+  },
+  "products": {
+    "title": "Products",
+    "subtitle": "Ingredients and supplies used every day.",
+    "nameZh": "Chinese name",
+    "nameEn": "English name",
+    "sku": "SKU",
+    "category": "Category",
+    "minStock": "Min stock",
+    "create": "Add product",
+    "empty": "No products yet",
+    "saved": "Product saved",
+    "deleted": "Product deleted"
+  },
+  "suppliers": {
+    "title": "Suppliers",
+    "subtitle": "Who you buy from.",
+    "name": "Supplier name",
+    "contactName": "Contact",
+    "phone": "Phone",
+    "email": "Email",
+    "wechat": "WeChat",
+    "notes": "Notes",
+    "create": "Add supplier",
+    "empty": "No suppliers yet",
+    "saved": "Supplier saved",
+    "deleted": "Supplier deleted"
+  },
+  "inventory": {
+    "title": "Inventory",
+    "subtitle": "Fast stock counts for the floor.",
+    "onHand": "On hand",
+    "lowStock": "Low stock",
+    "update": "Update stock",
+    "updated": "Stock updated",
+    "empty": "No inventory items",
+    "filterLow": "Show low only"
+  },
+  "procurementNeeds": {
+    "title": "Procurement needs",
+    "subtitle": "Kitchen asks. Managers convert to orders.",
+    "create": "New need",
+    "titleField": "Title",
+    "neededDate": "Needed by",
+    "addItem": "Add item",
+    "empty": "No open needs",
+    "saved": "Need saved",
+    "convert": "Convert to today's buy",
+    "converted": "Converted to purchase orders",
+    "status": {
+      "open": "Open",
+      "converted": "Converted",
+      "cancelled": "Cancelled"
+    }
+  },
+  "procurementToday": {
+    "title": "Today's purchases",
+    "subtitle": "Task list for what to buy today.",
+    "empty": "Nothing scheduled for today",
+    "confirm": "Confirm order",
+    "markOrdered": "Mark ordered",
+    "markReceived": "Mark received",
+    "updated": "Order updated",
+    "status": {
+      "draft": "Draft",
+      "confirmed": "Confirmed",
+      "ordered": "Ordered",
+      "received": "Received",
+      "cancelled": "Cancelled"
+    }
+  },
+  "smartProcurement": {
+    "title": "Smart buy",
+    "subtitle": "Suggest purchase quantities from low stock.",
+    "generate": "Generate suggestions",
+    "apply": "Create draft orders",
+    "empty": "No low-stock suggestions",
+    "created": "Draft orders created",
+    "suggestedQty": "Suggested qty",
+    "preferredSupplier": "Preferred supplier"
+  },
+  "invoices": {
+    "title": "Invoices",
+    "subtitle": "Capture supplier invoices after delivery.",
+    "create": "Add invoice",
+    "invoiceNumber": "Invoice #",
+    "amount": "Amount",
+    "empty": "No invoices yet",
+    "saved": "Invoice saved",
+    "verify": "Verify",
+    "dispute": "Dispute",
+    "description": "Description",
+    "addLine": "Add line",
+    "supplier": "Supplier",
+    "status": {
+      "pending": "Pending",
+      "verified": "Verified",
+      "disputed": "Disputed"
+    }
+  },
+  "excel": {
+    "title": "Excel import / export",
+    "subtitle": "Bulk manage products and suppliers.",
+    "exportProducts": "Export products",
+    "exportSuppliers": "Export suppliers",
+    "importProducts": "Import products",
+    "importSuppliers": "Import suppliers",
+    "exported": "Export ready",
+    "imported": "Import completed",
+    "templateHint": "Use the exported file as the import template."
+  },
+  "more": {
+    "title": "More",
+    "categories": "Categories",
+    "suppliers": "Suppliers",
+    "users": "Team",
+    "excel": "Excel",
+    "invoices": "Invoices",
+    "smart": "Smart buy",
+    "needs": "Needs"
+  },
+  "errors": {
+    "generic": "Something went wrong",
+    "unauthorized": "Please sign in",
+    "forbidden": "You do not have permission",
+    "notConfigured": "Supabase is not configured",
+    "uploadFailed": "Image upload failed",
+    "network": "Network error"
+  },
+  "permissions": {
+    "managerOnly": "Managers and owners only"
+  }
+}
